@@ -18,6 +18,7 @@ class BluetoothManager {
     void sendKey(const std::vector<uint8_t> &key);
 
     static BluetoothManager &getInstance();
+
    private:
     std::string deviceName_;
     bool isConnected_ = false;
