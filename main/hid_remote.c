@@ -7,12 +7,12 @@
 #include <esp_bt_defs.h>
 #include <esp_bt_device.h>
 #include <esp_bt_main.h>
+#include <esp_event.h>
 #include <esp_gap_ble_api.h>
 #include <esp_gatt_common_api.h>
 #include <esp_gatts_api.h>
-#include <esp_event.h>
+#include <soc/soc_caps.h>
 
-#include "soc/soc_caps.h"
 #include "tasks.h"
 
 static const char *TAG = "ble_task";
@@ -304,7 +304,6 @@ void send_power_key(bool is_down) {
 }
 
 void init_ble(void) {
-    esp_event_loop_create_default();
     s_ble_event_group = xEventGroupCreate();
     esp_bt_controller_mem_release(ESP_BT_MODE_CLASSIC_BT);
     esp_bt_controller_config_t bt_cfg = BT_CONTROLLER_INIT_CONFIG_DEFAULT();
